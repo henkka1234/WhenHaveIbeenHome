@@ -32,7 +32,7 @@ Run wifi.py first as visualization.py uses the database that wifi.py creates.
 Start visualize.py, you can use Screen to run multiple shell instances at the same time.
 Configure apache to serve the frontend (just point it to serve the "my-app" folder).
 
-Now just wait 
+You can test if the program works with the provided asus.log file
 
 ## Coming soon
 Simplifying the backend and combining the two python files for easier install.
