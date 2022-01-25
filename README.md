@@ -1,6 +1,9 @@
 # WhenHaveIbeenHome
 Program that creates statistics about when you have been home based on your home WiFi logs
 
+![Näyttökuva 2022-01-26 003128](https://user-images.githubusercontent.com/25725660/151070741-a6273f3f-fcdb-400b-baae-c3afe96dcff8.png)
+
+
 ## About
 
 This program is built to work on Asus RT-AC68U WiFi router, other routers may have different log syntaxes which may not work with this application.
