@@ -23,7 +23,7 @@ Python 3.7
 PIP3
 Psycopg2
 Numpy
-Apache2 or equivalient web-server
+Apache2 or equivalent web-server
 
 Log in to your router and add your server's IP-address to the remote log server field:
 ![Näyttökuva 2022-01-26 001217](https://user-images.githubusercontent.com/25725660/151068657-9237b3b5-1865-4a8f-8a9c-8798b4c93641.png)
