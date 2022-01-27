@@ -34,4 +34,4 @@ Update the mac-address you want to use to the field "mac" and update the locatio
 Run wifi.py, you can use Screen to run the wifi.py in the background.
 Configure apache to serve the frontend (just point it to serve the "my-app" folder).
 
-You can test if the program works with the provided asus.log file
+You can test the program with the provided asus.log file
