@@ -1,8 +1,7 @@
 # WhenHaveIbeenHome
 Project that creates good looking charts about when you have been home based on your home WiFi logs
 
-![Näyttökuva 2022-01-26 003128](https://user-images.githubusercontent.com/25725660/151070741-a6273f3f-fcdb-400b-baae-c3afe96dcff8.png)
-
+![Näyttökuva 2022-01-27 175736](https://user-images.githubusercontent.com/25725660/151395644-b20751de-6c3a-47ef-bfdf-c0ccc6574bbc.png)
 
 ## About
 
