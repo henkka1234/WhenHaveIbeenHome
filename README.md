@@ -17,6 +17,7 @@ The frontend is an Angular program based on ngx-graph demo. The frontend visuali
 
 ## Installation
 Tested on Ubuntu 18.04.5 LTS Server, should work on other Linux distros too as long as prerequisites are met.
+Some devices nowadays use randomized mac-addressm. For this program to work you have to use static mac-address. Android devices running Android 10 or newer default to randomized mac-address!
 ### Prerequisites
 Rsyslog\
 Python 3.7\
