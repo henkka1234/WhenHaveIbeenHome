@@ -30,11 +30,8 @@ Log in to your router and add your server's IP-address to the remote log server 
 
 Configure Rsyslog to store the logs in the place most suitable for you
 Update the log location to the field "location" in wifi.py
-Update the mac-address you want to use to the field "mac" in wifi.py. Update also the location where to save the json file, this should be stored in the frontend's "assets" folder.
+Update the mac-address you want to use to the field "mac" and update the location where you want to save the details.html file in wifi.py. Update also the location where to save the json file, this should be stored in the frontend's "assets" folder.
 Run wifi.py, you can use Screen to run the wifi.py in the background.
 Configure apache to serve the frontend (just point it to serve the "my-app" folder).
 
 You can test if the program works with the provided asus.log file
-
-## Coming soon
-Adding new features to the frontend
