@@ -9,9 +9,12 @@ import json
 
 #LOCATION OF THE LOG
 location = "asus.log"
-#REMEMBER TO ALSO CHANGE THE MAC-ADDRESS AND THE LOCATION OF THE JSON FILE!
-#Search for "CHANGE THIS" and for ".json"
-
+#MAC-ADDRESS
+mac = 'AC:D6:18:44:2A:A3'
+#LOCATION OF THE JSON FILE
+fileLocation = "Days.json"
+#LOCATION OF DETAILS.HTML, put this in assets folder!
+detailsLocation = "details.html"
 base = sqlite3.connect('timedb.sqlite')
 cur = base.cursor()
 #Test if a database already exists
@@ -71,13 +74,6 @@ def query_db(query, args=(), one=False):
     return (r[0] if r else None) if one else r
 
 def read_db():
-    #mac of the device that is used to track the user
-    #CHANGE THIS
-    mac = 'AC:D6:18:44:2A:A3'
-    #Where do you want to save the json file? The frontend gets it's information from this file
-    #CHANGE THIS
-    fileLocation = "Days.json"
-
     cur.execute('''SELECT DISTINCT day FROM Times WHERE mac=? ''', (mac,))
     data = cur.fetchall()
     athomeFor = "00:00:00"
@@ -129,6 +125,29 @@ def read_db():
     with open(fileLocation, 'w') as f:
         f.write(json_output)
 
+#create new details.html at set intervals
+def createDetails():
+    cur.execute("SELECT DISTINCT day FROM Times WHERE mac=? ",(mac,))
+    daysdb = cur.fetchall()
+    days = []
+    otherinfo = list()
+
+    for day in daysdb:
+        days.append(str(day[0]))
+        cur.execute("SELECT hour, reason FROM Times WHERE day=? AND mac=? ",(str(day[0]),mac,))
+        details = cur.fetchall()
+        otherinfo.append((details))
+
+    with open(detailsLocation, 'w') as f:
+        f.write('''<link href="txtstyle.css" rel="stylesheet" type="text/css"> \n''')
+        f.write("<h1>"+"This page shows the timestamps when the device "+mac+" has left the network</h1>\n")
+        f.write("<h1>The format is (timestamp, 0 or 1)</h1>\n")
+        f.write("<h1>0 = The device connected. 1 = The device disconnected")
+        for ind, day in enumerate(days):
+            f.write("<h2>"+day+"</h2>\n")
+            for info in otherinfo[ind]:
+                f.write("<p>"+str(info)+"</p>")
+
 #The main 
 def update_db(sc):
     print("working")
@@ -165,6 +184,7 @@ def update_db(sc):
                             VALUES (?,?,?,0)''', (cleanTimeDay(line[0]), cleanTimeHour(line[0]), line[7].replace(',','')))
                     base.commit()
     read_db()
+    createDetails()
     s.enter(10,1, update_db, (sc,))
 
 s.enter(10,1,update_db, (s,))
