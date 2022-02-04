@@ -160,10 +160,7 @@ def update_db(sc):
                 cur.execute('''SELECT reason FROM Times WHERE mac=? ORDER BY rowid DESC LIMIT 1''', (line[7].replace(',',''),))
                 try:
                     latest = cur.fetchone()[0]
-                    try:
-                        latest = int(latest)
-                    except:
-                        pass
+                    latest = int(latest)
                 except:
                     latest = 0
                 if latest != 1:
